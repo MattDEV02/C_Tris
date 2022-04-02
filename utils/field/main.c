@@ -49,7 +49,7 @@ bool hasWin(Field field) {
 	);
 }
 
-bool playerTurn(Field field, unsigned short player, unsigned short* movesCounter) {
+bool playerTurn(Field field, unsigned short player, unsigned short movesCounter) {
     static short positionsOccupied[N * N];
 	short position = 0;
     const char piece = getPiece(player);
@@ -60,12 +60,11 @@ bool playerTurn(Field field, unsigned short player, unsigned short* movesCounter
 		scanf("%hu", &(position));
 		if(!isValidPosition(position))
 			printf("\nLe posizioni vanno da 1 a 9 non %i, riprova.\n", position);
-		else if(isPositionsOccupied(positionsOccupied, *movesCounter, position)) // check se l'i-esima position è occupata
+		else if(isPositionsOccupied(positionsOccupied, movesCounter, position)) // check se l'i-esima position è occupata
 			printf("\nLa posizione %i e' occupata riprova inserendone una non occupata.\n", position);
-	} while(!isValidPosition(position) || isPositionsOccupied(positionsOccupied, *movesCounter, position));
+	} while(!isValidPosition(position) || isPositionsOccupied(positionsOccupied, movesCounter, position));
 	pieceInsert(field, piece, position);
-	positionsOccupied[*movesCounter] = position;
-	*movesCounter = *movesCounter + 1;
-	printf("\nMossa numero %i effettuta da parte del giocatore numero %i.\n \n", *movesCounter, player + 1);
+	positionsOccupied[movesCounter] = position;
+	printf("\nMossa numero %i effettuta da parte del giocatore numero %i.\n \n", movesCounter + 1, player + 1);
 	return hasWin(field);
 }
