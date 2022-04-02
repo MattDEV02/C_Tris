@@ -13,7 +13,7 @@ void printField(Field field);
 
 bool hasWin(Field field);
 
-bool playerTurn(Field field, unsigned short player, unsigned short* movesCounter);
+bool playerTurn(Field field, unsigned short player, unsigned short movesCounter);
 
 
 #endif
