@@ -44,7 +44,7 @@ void pieceInsert(Field field, const char piece, short position) {
 		    break;
         }
 		default: {
-			printf("\nposition %i non valida!\n", position);
+			printf("\nPosition %i non valida!\n", position);
 			exit(EXIT_FAILURE);	
 			break;
 		}
